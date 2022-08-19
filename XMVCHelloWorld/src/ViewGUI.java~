@@ -1,0 +1,129 @@
+/*
+ * CPS 202
+ * Fall 2016
+ * Dr. Close
+ * 
+ * Copyright © 2016 Daryl Close 
+ * This work is licensed under the Creative Commons 
+ * Attribution-Noncommercial-No Derivative Works 3.0 United States License. 
+ * To view a copy of this license, visit 
+ * http://creativecommons.org/licenses/by-nc-nd/3.0/us/ 
+ * or send a letter to Creative Commons, 171 Second Street, Suite 300, 
+ * San Francisco, California, 94105, USA. * 
+ */
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ * In MVC, the View class handles output.  This View is GUI-based.
+ * <p>
+ * The View knows nothing about the Model or the Controller, 
+ * i.e., the View contains no references to objects of either class. 
+ * 
+ * @author Daryl Close dclose@heidelberg.edu
+ * @version 1.0, 22-Nov-2016
+ */
+public class ViewGUI
+{
+    //------- private instance fields -------
+   
+    private JFrame centerFrame;
+    private JPanel namePanel;
+    private JPanel buttonPanel;
+    private JLabel promptLabel;
+    private JTextField inputOutputTextField;
+    private JButton continueButton;
+     
+    //-------constructors-------
+    
+    public ViewGUI()
+    {   
+        createAndShowGUI();
+        
+    }//End no-arg constructor
+    
+    //-------instance methods-------
+    
+    public void createAndShowGUI()
+    {
+        //Create and set up frame, background, and layout
+        centerFrame = new JFrame();
+        centerFrame.setLocationRelativeTo(null); 
+        centerFrame.setLayout(new GridLayout(2, 1));
+
+        //Set up name panel 
+        namePanel = new JPanel();
+        namePanel.setBackground(Color.LIGHT_GRAY);
+        namePanel.setLayout(new BorderLayout());
+        
+        //Set up components for name panel
+        promptLabel = new JLabel("");
+        inputOutputTextField = new JTextField(20);
+        
+        //Add components to name panel
+        namePanel.add(promptLabel, BorderLayout.CENTER);
+        namePanel.add(inputOutputTextField, BorderLayout.SOUTH);               
+       
+        //Set up button panel
+        buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
+        
+        //Set up components and listeners for button panel
+        continueButton = new JButton("Continue");
+         
+        //Add components to button panel
+        buttonPanel.add(continueButton);  
+         
+        //Add panels to frame
+        centerFrame.add(namePanel);
+        centerFrame.add(buttonPanel);
+        
+        //Pack, center, and display frame
+        centerFrame.pack();
+        centerFrame.setSize(400, 200);  //Always place after pack
+        centerFrame.setVisible(true);
+        centerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+    }//End method void createAndShowGUI()
+ 
+    public void displayTitle(String tempTitle)
+    {
+        centerFrame.setTitle(tempTitle);
+    }
+    public void displayPrompt(String tempPrompt)
+    {
+        promptLabel.setText(tempPrompt);
+    }
+    
+    public void displayMessage(String tempMessage)
+    {
+        inputOutputTextField.setText(tempMessage + "!");
+    }
+ 
+    public String getInputOutputTextField()
+    {
+        return inputOutputTextField.getText();
+    }
+    
+    /**
+     * Register the widgets with a listener
+     * 
+     * @param listener An ActionListener interface variable to store an object
+     *                 of a Controller class that implements the interface.
+     */
+    public void addListenersToWidgets(ActionListener listener)
+    {
+        continueButton.addActionListener(listener);
+ 
+    }//End method void addListenersToWidgets(ActionListener)
+    
+}//End public class ViewGUI

@@ -1,0 +1,13 @@
+Portfolio:
+> Run Dice Roller (Python Script) - Opens a python app that generates dice rolls.
+> Play Memory Game - Opens an application that lets you play a memory game.
+> Look Up Baby Names - Opens an application that lets you look up the popularity of baby names.
+> Play Tic-Tac-Toe - Opens an application that lets you play tic-tac-toe.
+
+View:
+> Look and Feel - Allows you to set the style of the window.
+> Scroll Bars - Allows you to set the appearance of the scroll bars.
+
+Help:
+> Help Contents - Displays this message.
+> About - Provides information about developers.
